@@ -1,41 +1,19 @@
 # <h1 align="center">**`Plataforma de Gestión de Documentos con Google Drive`**</h1>
 * **`Eduardo Pérez Chavarría` _(Data Engineer, Data Analyst, Data Scientist)_**   [![linkedin](https://img.shields.io/badge/linkedin-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/eduardo-perez-chavarria/)
 
-Esta plataforma permite la gestión eficiente de documentos almacenados en Google Drive, proporcionando una interfaz web para subir, descargar, buscar y eliminar documentos. Está diseñada para facilitar la organización de archivos mediante etiquetas personalizadas, ofreciendo también búsqueda avanzada por nombre o etiqueta y prevención de duplicados.
+Aquí se presenta el proyecto de un repositorio digital que permite la gestión eficiente de documentos almacenados usando para ello Google Drive y proporcionando una interfaz web para subir, descargar, buscar y eliminar documentos. Está diseñada para facilitar la organización de archivos mediante etiquetas personalizadas, ofreciendo también búsqueda avanzada por nombre o etiqueta y prevención de duplicados. Se trata del producto central de un proyecto en curso más amplio, que busca integrar esta plataforma a un sistema de login con autentificación de dos factores y permisos diferenciales para usuarios y administradores. 
+
 ## Stack Tecnológico
+Ver en detalle ![aqui](stack_tecnologico.md)
+Backend: Python 3.9, Flask, SQLite3
+Autenticación y Autorización: Google OAuth2
+Google Drive API: Google Drive API v3
+Frontend: HTML5, CSS3, JavaScript
+Herramientas de Desarrollo: Git, GitHub
+Dependencias Principales: google-auth, google-api-python-client, google-auth-oauthlib, google-auth-httplib2
+Otros Componentes: MediaFileUpload de googleapiclient.http, Flask extensions
 
-### Backend
 
-- Python 3.9: Lenguaje principal de programación. Flask: Micro framework web para el manejo de solicitudes HTTP y lógica de la aplicación.
-- SQLite3: Sistema de gestión de bases de datos para almacenar información.
-
-### Autenticación y Autorización
-
-- Google OAuth2: Autenticación de usuarios y autorización para acceder a Google Drive.
-
-### Google Drive API
-
-- Google Drive API v3: Interacción con Google Drive para operaciones de gestión de archivos y carpetas.
-
-### Frontend
-
-- HTML5, CSS3, JavaScript: Tecnologías web estándares para la interfaz de usuario.
-
-### Herramientas de Desarrollo
-
-- Git: Control de versiones.
-- GitHub: Plataforma para almacenar el código fuente y gestionar contribuciones.
-
-### Dependencias Principales
-
-- google-auth, google-api-python-client, google-auth-oauthlib, google-auth-httplib2: Librerías para integrar con Google OAuth2 y Google Drive API.
-
-### Otros Componentes
-
-- MediaFileUpload de googleapiclient.http: Para la subida de archivos a Google Drive.
-- Flask extensions como Flask-Session, si es necesario.
-
-Este stack tecnológico combina Python y Flask para el desarrollo del backend, Google OAuth2 y Google Drive API para la autenticación y gestión de documentos, y tecnologías web estándares para el frontend.
 ## Funcionalidades Detalladas
 
 ### Subida de Documentos
