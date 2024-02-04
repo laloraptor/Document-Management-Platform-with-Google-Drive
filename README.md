@@ -4,7 +4,7 @@
 Aquí se presenta el proyecto de un repositorio digital que permite la gestión eficiente de documentos almacenados usando para ello Google Drive y proporcionando una interfaz web para subir, descargar, buscar y eliminar documentos. Está diseñada para facilitar la organización de archivos mediante etiquetas personalizadas, ofreciendo también búsqueda avanzada por nombre o etiqueta y prevención de duplicados. Se trata del producto central de un proyecto en curso más amplio, que busca integrar esta plataforma a un sistema de login con autentificación de dos factores y permisos diferenciales para usuarios y administradores. 
 
 ## Stack Tecnológico
-Ver en detalle ![aqui](stack_tecnologico.md)
+Ver en detalle [aqui](stack_tecnologico.md)
 Backend: Python 3.9, Flask, SQLite3
 Autenticación y Autorización: Google OAuth2
 Google Drive API: Google Drive API v3
