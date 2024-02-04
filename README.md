@@ -1,13 +1,13 @@
 # <h1 align="center">**`Document Management Platform with Google Drive`**</h1>
 * ** **`Eduardo Pérez Chavarría` _(Data Engineer, Data Analyst, Data Scientist)_** [![linkedin](https://img.shields.io/badge/linkedin-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/eduardo-perez-chavarria/)
 
-Consulta aquí el ![read.me](README_ESP.md) en español
+Consulta aquí el ![README.md](README_ESP.md) en español
 
 Here is presented the project of a digital repository that allows the efficient management of stored documents using Google Drive and providing a web interface for uploading, downloading, searching and deleting documents. It is designed to facilitate the organization of files using custom tags, also offering advanced search by name or tag and duplicate prevention. This is the core product of a larger ongoing project, which seeks to integrate this platform into a login system with two-factor authentication and differential permissions for users and administrators. 
 
 I invite you to take a look at how it works in this video https://youtu.be/nWmto4z06eY
 
-![repository](images/repository.png)
+![repository](imagenes/repositorio.png)
 
 
 ## Technology Stack
@@ -26,19 +26,19 @@ See in detail [here](stack_tecnologico.md)
 ### Document Upload
 
 - Folder Selection:** Users can select existing folders in Google Drive or create new tags when uploading documents, facilitating organization from the start.
-![repository](images/drive.png)
+![repository](imagenes/drive.png)
 
 - Duplicate Prevention:** Before creating a new tag (folder), the application checks if one with the same name already exists, thus avoiding the creation of duplicates.
-![upload](images/upload.png)
+![upload](imagenes/subir.png)
 ### Downloading Documents
 
 - Direct Access:** Documents can be downloaded directly from the web interface, providing a secure download link that connects to Google Drive.
-![repository](images/download.png)
+![repository](imagenes/descarga.png)
 
 ### Advanced Search
 
 - Filtering by Name or Tag:** Users can search for documents using names or tags, allowing for fast and efficient retrieval of needed files.
-![repository](images/Searches.png)
+![repository](imagenes/Busquedas.png)
 
 ### Tag Management
 
