@@ -1,7 +1,7 @@
 # <h1 align="center">**`Document Management Platform with Google Drive`**</h1>
 * ** **`Eduardo Pérez Chavarría` _(Data Engineer, Data Analyst, Data Scientist)_** [![linkedin](https://img.shields.io/badge/linkedin-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/eduardo-perez-chavarria/)
 
-Consulta aquí el ![README.md](README_ESP.md) en español
+Consulta aquí el [README.md](README_ESP.md) en español
 
 Here is presented the project of a digital repository that allows the efficient management of stored documents using Google Drive and providing a web interface for uploading, downloading, searching and deleting documents. It is designed to facilitate the organization of files using custom tags, also offering advanced search by name or tag and duplicate prevention. This is the core product of a larger ongoing project, which seeks to integrate this platform into a login system with two-factor authentication and differential permissions for users and administrators. 
 
