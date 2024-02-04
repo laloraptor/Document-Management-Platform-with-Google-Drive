@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+    
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css"> <!-- Agregamos un enlace a la hoja de estilos -->
+    <style>
+        header {
+            background-image: url('/static/images/repo.webp');
+            background-size: cover;
+            background-position: center;
+            height: 150px;
+        }
+        
+        /* Estilo de categorías para archivos */
+        .category-files {
+            background-color: #f3f3f3;
+            padding: 5px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+
+        /* Estilo de enlace a archivos */
+        .file-link {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .file-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    
+</head>
+<body>
+    <header>
+
+    </header>
+    <main class="container">
+        <form action="/search_files" method="post"> <!-- Cambia la acción a "/search_files" -->
+            <label for="search_query">Buscar archivos por nombre o etiqueta:</label>
+            <input type="text" id="search_query" name="search_query" placeholder="Buscar archivos por nombre o etiqueta">
+            <select name="search_type">
+                <option value="name">Nombre de archivo</option>
+                <option value="label">Etiqueta</option>
+            </select>
+            <input type="submit" value="Buscar">
+        </form>
+        <ul>
+            {% for file in files %}
+                <li class="category-files">
+                    <a href="{{ file.webContentLink }}" class="file-link" target="_blank">{{ file.name }}</a>
+                    <form action="/delete_file/{{ folder_id }}/{{ file.id }}" method="get">
+                        <button type="submit">Eliminar</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+        <div id="upload-success" style="display: none;">
+            <p>Documento subido con éxito a Google Drive</p>
+        </div>
+        <a href="/">Volver al índice</a> <!-- El enlace de volver al índice apunta al índice ("/") -->
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 github:laloraptor - Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

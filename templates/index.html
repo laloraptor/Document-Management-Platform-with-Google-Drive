@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <script src="static/script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Gestión de Documentos</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <style>
+        header {
+            background-image: url('/static/images/repo.jpg');
+            background-size: 1200px;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 250px;
+        }
+
+        .search-button {
+            background-color: #ddd;
+            color: #333;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 1rem 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .search-button:hover {
+            background-color: #ccc;
+        }
+
+        #search-forms, #upload-form {
+            clear: both;
+            padding-top: 20px;
+        }
+
+        /* Agrega estos estilos para hacer clickeable el área de hover */
+        .folder-list li {
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            flex: calc(33.333% - 1rem);
+            box-sizing: border-box;
+            text-align: center;
+            margin-right: 1rem;
+            margin-top: 1rem;
+            background-color: #e7e7e7;
+            cursor: pointer;
+            display: flex; /* Agregamos este estilo para hacer clickeable el área de hover */
+            flex-direction: column; /* Agregamos este estilo para hacer clickeable el área de hover */
+            align-items: center; /* Agregamos este estilo para hacer clickeable el área de hover */
+            justify-content: center; /* Agregamos este estilo para hacer clickeable el área de hover */
+        }
+
+        .folder-list li a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            flex: 1; /* Agregamos este estilo para hacer clickeable el área de hover */
+            width: 100%; /* Agregamos este estilo para hacer clickeable el área de hover */
+        }
+
+        /* Estilo para resaltar la carpeta seleccionada */
+        .highlighted-folder {
+            background-color: #f0f0f0; /* Cambia el color de fondo al seleccionar la carpeta */
+        }
+    </style>
+</head>
+<body>
+    <header></header>
+    <main class="container">
+        <button type="button" onclick="toggleForms()" class="search-button">Búsquedas</button>
+        <button type="button" onclick="toggleUploadForm()" class="search-button">Subir Documento</button>
+
+        <div class="bordered" id="search-forms" style="display: none;">
+            <div id="search-files-form">
+                <form action="/search_files" method="post" class="form-search">
+                    <label for="search_query">Buscar archivos:</label>
+                    <input type="text" id="search_query" name="search_query" placeholder="Nombre de archivo">
+                    <button type="submit" class="search-button">Buscar</button>
+                </form>
+            </div>
+            <div id="search-labels-form">
+                <form action="/search_labels" method="post" class="form-search" onsubmit="convertToUpperCase()">
+                    <label for="search_label">Buscar etiquetas:</label>
+                    <input type="text" id="search_label" name="search_query" placeholder="Nombre de etiqueta">
+                    <button type="submit" class="search-button">Buscar</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="bordered" id="upload-form" style="display: none;">
+            <form action="/" method="post" enctype="multipart/form-data" class="form-upload" onsubmit="return validateCategory()">
+                <input type="file" id="documento" name="documento" class="search-button">
+                <label for="label">Categoría:</label>
+                <select id="label" name="label" onchange="toggleNewCategoryField()">
+                    <option value="">Seleccione una categoría existente o añada una nueva</option>
+                    {% for folder in folders if folder.name != 'Crear nueva etiqueta' %}
+                    <option value="{{ folder['id'] }}">{{ folder['name'] }}</option>
+                    {% endfor %}
+                    <option value="nueva_categoria">Nueva categoría</option>
+                </select>
+                <br>
+                <label for="new_label" id="newLabelLabel" style="display: none;">Nueva categoría:</label>
+                <input type="text" id="new_label" name="new_label" placeholder="Nueva categoría" style="display: none;">
+                <button type="submit" class="search-button">Subir Documento</button>
+            </form>
+        </div>
+
+        <div id="progress-bar" class="progress-bar" style="display: none;">
+            <p>Subiendo archivo...</p>
+            <div class="bar"></div>
+        </div>
+
+        <!-- Agrega un elemento para mostrar el mensaje de nueva categoría -->
+        <div id="new-category-alert" style="display: none;">
+            <p>Nueva categoría creada en la lista de Categorías Existentes.</p>
+        </div>
+
+        <div class="bordered">
+            <section class="folder-section">
+                <h2>Categorías Existentes (últimas creadas)</h2>
+                <ul class="folder-list" id="folder-list">
+                    {% for folder in folders if folder.name != 'Crear nueva etiqueta' %}
+                    <li class="category-item" id="folder-{{ folder.id }}" {% if highlighted_folder == folder.id %}class="highlighted-folder"{% endif %}>
+                        <a href="/view_files_in_folder/{{ folder.id }}">{{ folder.name }}</a>
+                    </li>
+                    {% endfor %}
+                    {% for document in documents|sort(attribute='name') %}
+                    <li>{{ document.name }}</li>
+                    {% endfor %}
+                </ul>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 github:laloraptor - Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function validateCategory() {
+            var categorySelect = document.getElementById("label");
+            var newLabelInput = document.getElementById("new_label");
+            
+            // Verifica si se ha seleccionado una categoría existente o se ha ingresado una nueva
+            if (categorySelect.value === "" && newLabelInput.value === "") {
+                alert("Por favor, seleccione o ingrese una categoría antes de subir el archivo.");
+                return false; // Detiene el envío del formulario si no se ha seleccionado una categoría
+            }
+            
+            return true; // Permite el envío del formulario si se ha seleccionado una categoría
+        }
+    </script>
+</body>
+</html>

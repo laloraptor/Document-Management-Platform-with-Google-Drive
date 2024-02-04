@@ -1,0 +1,157 @@
+/* Reset de estilos básicos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif; /* Fuente más moderna */
+}
+
+/* Estilos generales */
+body {
+    background: linear-gradient(90deg, hwb(170 0% 77% / 0.652), hwb(74 20% 42% / 0.652), hwb(170 0% 77% / 0.652));
+
+
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 80%; /* Más espacio en los lados */
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); /* Sombra más sutil */
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+/* Estilos para la sección de bordes */
+.bordered {
+    border: 1px solid #ddd; /* Borde sutil */
+    margin-bottom: 2rem; /* Espacio después del borde */
+    padding: 1rem; /* Espacio dentro del borde */
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+/* Formularios de búsqueda y subida */
+.form-search,
+.form-upload {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.form-search label,
+.form-upload label {
+    margin-bottom: .5rem;
+}
+
+.form-search input[type="text"],
+.form-upload input[type="file"],
+.form-upload input[type="text"],
+.form-upload select,
+.form-upload input[type="submit"],
+.form-search button {
+    padding: 1rem 2rem; /* Ajusta el tamaño de los campos de entrada y botones */
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.2rem; /* Tamaño de fuente más grande */
+}
+
+/* Estilos para los botones "Búsquedas" y "Subir Documento" */
+.search-button {
+    background-color: #ddd; /* Color gris actual */
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 1rem 2rem; /* Ajusta el tamaño de los botones */
+    margin-bottom: 1rem;
+    font-size: 1.2rem; /* Tamaño de fuente igual que otros botones */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+/* Estilos para la animación de botones al hacer hover */
+.search-button:hover {
+    background-color: #ccc;
+    transform: scale(1.05); /* Cambia el tamaño al pasar el cursor */
+}
+
+/* Animación de despliegue hacia abajo */
+#search-forms, #upload-form {
+    max-height: 1000px;
+    overflow: hidden;
+    transition: max-height 2s ease-in-out, opacity 2s ease-in-out; /* Aumenta la duración a 2 segundos */
+}
+
+
+/* Estilos para la lista de carpetas */
+.folder-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap; /* Permite que las categorías se ajusten a varias columnas */
+    justify-content: space-between; /* Distribución uniforme entre las columnas */
+}
+
+/* Estilos para las categorías existentes al hacer hover */
+.folder-list li:hover {
+    background-color: #dedede; /* Cambia el fondo al hacer hover */
+    transform: scale(1.05); /* Cambia el tamaño al pasar el cursor */
+    cursor: pointer;
+}
+
+.folder-list li {
+    padding: 0.75rem;
+    margin-bottom: 1rem; /* Espacio inferior de las categorías */
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    flex: calc(33.333% - 1rem); /* Distribuye el espacio disponible equitativamente entre las columnas */
+    box-sizing: border-box; /* Incluye padding y border en el tamaño total */
+    text-align: center; /* Centra el contenido dentro de cada elemento */
+    margin-right: 1rem; /* Espacio entre los elementos en la misma fila */
+    margin-top: 1rem; /* Espacio entre las filas */
+}
+
+/* Estilo para el último elemento de cada fila */
+.folder-list li:nth-child(3n) {
+    margin-right: 0; /* Elimina el margen derecho para el tercer elemento en cada fila */
+}
+
+/* Estilo para desactivar el subrayado de texto en el enlace dentro de li */
+.folder-list li a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+/* Contenido oculto visualmente */
+.sr-only {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* Estilo al pasar el cursor por encima */
+.folder-list li:hover {
+    background-color: #dedede;
+}
+
+/* Pie de página */
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    color: #131010;
+    font-size: 1rem; /* Tamaño de fuente más pequeño */
+    margin-top: 0.5rem; /* Espacio superior más pequeño */
+    padding-top: 0.5rem; /* Espacio superior interno más pequeño */
+    padding-bottom: 0.5rem; /* Espacio inferior interno más pequeño */
+}
